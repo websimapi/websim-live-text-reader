@@ -16,7 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     async function setupTesseract() {
         statusText.textContent = 'Loading OCR model...';
         spinner.classList.remove('hidden');
+        // Using OEM_TESSERACT_LSTM_COMBINED for potentially better accuracy,
+        // and setting cacheMethod to 'readOnly' to use the best models from the CDN.
         tesseractWorker = await Tesseract.createWorker('eng', 1, {
+            workerPath: `https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/worker.min.js`,
+            langPath: `https://tessdata.projectnaptha.com/4.0.0_best`,
+            corePath: `https://cdn.jsdelivr.net/npm/tesseract.js-core@5/tesseract-core.wasm.js`,
             logger: m => {
                 if (m.status === 'recognizing text') {
                     statusText.textContent = `Recognizing... ${Math.round(m.progress * 100)}%`;
@@ -142,4 +147,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 });
-
