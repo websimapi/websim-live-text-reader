@@ -1,0 +1,123 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#app-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#video-container {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.text-box {
+    position: absolute;
+    border: 2px solid rgba(0, 255, 255, 0.7);
+    background-color: rgba(0, 128, 128, 0.3);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.text-box:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+#controls {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#zoom-slider {
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+#switch-camera-button {
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#switch-camera-button img {
+    width: 100%;
+    height: 100%;
+    filter: invert(1);
+}
+
+#status-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+#status-text {
+    margin: 0;
+}
+
+#spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #00ffff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
